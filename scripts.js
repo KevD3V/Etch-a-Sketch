@@ -4,10 +4,15 @@
 
 const board = document.querySelector(".board");
 const tile = document.createElement("div");
+const newPadBTN = document.querySelector(".newPadBTN");
 
+/** 
+ * References to these elements is not required in current version.
 const grid16 = document.querySelector(".grid16");
 const grid32 = document.querySelector(".grid32");
-const grid64 = document.querySelector("grid64");
+const grid64 = document.querySelector(".grid64");
+*/
+
 
 
 /**
@@ -20,12 +25,32 @@ board.addEventListener("mouseover", (event) => {
         console.log("Tile detected!");
         target.setAttribute("style", "background-color: red");
     }
+});
 
+/** 
+ * These Event Listeners are not used in current version.
+ * 
+grid16.addEventListener("click", () => {
+    clearTiles();
+    createTiles(16);
+});
+
+grid32.addEventListener("click", () => {
+    clearTiles();
+    createTiles(32);
+});
+
+grid64.addEventListener("click", () => {
+    clearTiles();
+    createTiles(64);
+});
+
+*/
+newPadBTN.addEventListener("click", () => {
+    createNewPad();
 });
 
 
-
-createTiles(100);
 
 
 
@@ -50,3 +75,26 @@ function createTiles(numberOfTiles) {
 }
 
 
+/***
+ * Clears all tiles from the grid.
+ */
+function clearTiles() {
+    while (board.firstChild) {
+        board.removeChild(board.firstChild);
+    }
+}
+
+/***
+ * Create new pad with dimensions provided by user.
+ * Dimensions must be a whole number from 1 to 100.
+ */
+function createNewPad() {
+    let size = prompt("Enter a size between 1 and 100.", 0);
+    if (size > 100 || size < 1) {
+        console.log("Size is out of bounds: " + size);
+    }
+    else {
+        clearTiles();
+        createTiles(size);
+    }
+}
