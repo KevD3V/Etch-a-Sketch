@@ -6,46 +6,17 @@ const board = document.querySelector(".board");
 const tile = document.createElement("div");
 const newPadBTN = document.querySelector(".newPadBTN");
 
-/** 
- * References to these elements is not required in current version.
-const grid16 = document.querySelector(".grid16");
-const grid32 = document.querySelector(".grid32");
-const grid64 = document.querySelector(".grid64");
-*/
-
-
-
 /**
  * Set up event listeners
  */
 board.addEventListener("mouseover", (event) => {
     let target = event.target;
 
-    if (target.getAttribute("class") === "tile") {
-        console.log("Tile detected!");
-        target.setAttribute("style", "background-color: red");
+    if (checkIfTile(target)) {
+        changeTile(target);
     }
 });
 
-/** 
- * These Event Listeners are not used in current version.
- * 
-grid16.addEventListener("click", () => {
-    clearTiles();
-    createTiles(16);
-});
-
-grid32.addEventListener("click", () => {
-    clearTiles();
-    createTiles(32);
-});
-
-grid64.addEventListener("click", () => {
-    clearTiles();
-    createTiles(64);
-});
-
-*/
 newPadBTN.addEventListener("click", () => {
     createNewPad();
 });
@@ -96,5 +67,26 @@ function createNewPad() {
     else {
         clearTiles();
         createTiles(size);
+    }
+}
+
+/**
+ * Change tile to random color and increase opacity by 10% 
+ */
+function changeTile(target) {
+    // Use classes to control opacity.
+    // implement a switch statement for each class.
+
+}
+
+/**
+ * Check to see if target is a tile.
+ */
+function checkIfTile(target) {
+    if (target.getAttribute("class") === "tile") {
+        return true;
+    }
+    else {
+        return false;
     }
 }
