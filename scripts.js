@@ -15,6 +15,8 @@ board.addEventListener("mouseover", (event) => {
     if (checkIfTile(target)) {
         changeTile(target);
     }
+
+    //target = null;
 });
 
 newPadBTN.addEventListener("click", () => {
@@ -75,15 +77,58 @@ function createNewPad() {
  */
 function changeTile(target) {
     // Use classes to control opacity.
-    // implement a switch statement for each class.
 
+    if (target.classList.contains("opacity-10")) {
+        return;
+    }
+    else if (target.classList.contains("opacity-9")) {
+        target.classList.remove("opacity-9");
+        target.classList.add("opacity-10");
+    }
+    else if (target.classList.contains("opacity-8")) {
+        target.classList.remove("opacity-8");
+        target.classList.add("opacity-9");
+    }
+    else if (target.classList.contains("opacity-7")) {
+        target.classList.remove("opacity-7");
+        target.classList.add("opacity-8");
+    }
+    else if (target.classList.contains("opacity-6")) {
+        target.classList.remove("opacity-6");
+        target.classList.add("opacity-7");
+    }
+    else if (target.classList.contains("opacity-5")) {
+        target.classList.remove("opacity-5");
+        target.classList.add("opacity-6");
+    }
+    else if (target.classList.contains("opacity-4")) {
+        target.classList.remove("opacity-4");
+        target.classList.add("opacity-5");
+    }
+    else if (target.classList.contains("opacity-3")) {
+        target.classList.remove("opacity-3");
+        target.classList.add("opacity-4");
+    }
+    else if (target.classList.contains("opacity-2")) {
+        target.classList.remove("opacity-2");
+        target.classList.add("opacity-3");
+    }
+    else if (target.classList.contains("opacity-1")) {
+        target.classList.remove("opacity-1");
+        target.classList.add("opacity-2");
+    }
+    else {
+        console.log(target.classList.contains("opacity-1"));
+        target.classList.add("opacity-1");
+
+    }
 }
 
 /**
  * Check to see if target is a tile.
  */
 function checkIfTile(target) {
-    if (target.getAttribute("class") === "tile") {
+    if (target.classList.contains("tile")) {
         return true;
     }
     else {
